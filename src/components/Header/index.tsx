@@ -13,13 +13,13 @@ export function Header() {
       <img src={logoCoffee} alt="" />
       <Actions>
         <Location>
-          <MapPin size={22} color={themeContext['purple-500']} weight="fill" />
+          <MapPin size={22} color={themeContext['purple']} weight="fill" />
           Machado, MG
         </Location>
         <Cart>
           <ShoppingCart
             size={22}
-            color={themeContext['yellow-800']}
+            color={themeContext['yellow-dark']}
             weight="fill"
           />
         </Cart>

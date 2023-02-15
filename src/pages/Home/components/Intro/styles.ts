@@ -6,13 +6,13 @@ export const IntroContainer = styled.div`
   justify-content: space-between;
   padding: 5.75rem 10rem;
 
-  background: url(${backgroundIntro}) center no-repeat;
+  background: url(${backgroundIntro}) center repeat;
   background-size: cover;
 `
 
 export const Title = styled.p`
   font-family: 'Baloo 2', cursive;
-  color: ${(props) => props.theme['gray-700']};
+  color: ${(props) => props.theme.title};
   font-weight: 800;
   font-size: 3rem;
 `
@@ -39,10 +39,10 @@ export const Item = styled.div`
 `
 
 const ITEM_COLORS = {
-  dark_yellow: 'yellow-800',
-  gray: 'gray-400',
-  yellow: 'yellow-500',
-  purple: 'purple-500',
+  dark_yellow: 'yellow-dark',
+  gray: 'text',
+  yellow: 'yellow',
+  purple: 'purple',
 } as const
 
 interface ItemProps {

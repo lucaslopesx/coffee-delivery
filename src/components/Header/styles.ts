@@ -22,15 +22,15 @@ export const Location = styled.div`
   align-items: center;
   gap: 0.25rem;
 
-  background: ${(props) => props.theme['purple-300']};
+  background: ${(props) => props.theme['purple-light']};
   padding: 0.5rem;
   border-radius: 6px;
 
-  color: ${(props) => props.theme['purple-800']};
+  color: ${(props) => props.theme['purple-dark']};
 `
 
 export const Cart = styled.div`
-  background: ${(props) => props.theme['yellow-300']};
+  background: ${(props) => props.theme['yellow-light']};
   padding: 0.5rem;
   border-radius: 6px;
 
