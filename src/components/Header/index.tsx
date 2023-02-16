@@ -13,7 +13,7 @@ export function Header() {
       <img src={logoCoffee} alt="" />
       <Actions>
         <Location>
-          <MapPin size={22} color={themeContext['purple']} weight="fill" />
+          <MapPin size={22} color={themeContext.purple} weight="fill" />
           Machado, MG
         </Location>
         <Cart>

@@ -26,7 +26,7 @@ export function Intro() {
             <ItemIcon itemColor="dark_yellow">
               <ShoppingCart
                 size={16}
-                color={themeContext['background']}
+                color={themeContext.background}
                 weight="fill"
               />
             </ItemIcon>
@@ -36,7 +36,7 @@ export function Intro() {
             <ItemIcon itemColor="gray">
               <Package
                 size={16}
-                color={themeContext['background']}
+                color={themeContext.background}
                 weight="fill"
               />
             </ItemIcon>
@@ -44,21 +44,13 @@ export function Intro() {
           </Item>
           <Item>
             <ItemIcon itemColor="yellow">
-              <Timer
-                size={16}
-                color={themeContext['background']}
-                weight="fill"
-              />
+              <Timer size={16} color={themeContext.background} weight="fill" />
             </ItemIcon>
             <p>Entrega rápida e rastreada</p>
           </Item>
           <Item>
             <ItemIcon itemColor="purple">
-              <Coffee
-                size={16}
-                color={themeContext['background']}
-                weight="fill"
-              />
+              <Coffee size={16} color={themeContext.background} weight="fill" />
             </ItemIcon>
             <p>O café chega fresquinho até você</p>
           </Item>
