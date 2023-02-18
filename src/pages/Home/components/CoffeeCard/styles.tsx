@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CoffeeCard = styled.div`
+export const CoffeeCardContainer = styled.div`
   background: ${(props) => props.theme.card};
   position: relative;
   padding: 0 1.25rem;
@@ -19,19 +19,9 @@ export const CoffeeCard = styled.div`
   }
 `
 
-export const Coffees = styled.div`
-  margin: 0 10rem;
-`
-
-export const CoffeesTitle = styled.p`
-  margin-top: 2rem;
-  margin-bottom: 3.375rem;
-
-  font-family: 'Baloo 2', cursive;
-  font-size: 2rem;
-  font-weight: 800;
-
-  color: ${(props) => props.theme.subtitle};
+export const Tags = styled.div`
+  display: flex;
+  gap: 0.25rem;
 `
 
 export const CoffeeTag = styled.p`
@@ -104,6 +94,14 @@ export const ActionButton = styled.button`
   border: 0;
   background: transparent;
   align-items: center;
+
+  color: ${(props) => props.theme.purple};
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: ${(props) => props.theme['purple-dark']};
+  }
 `
 
 export const Actions = styled.div`
@@ -135,4 +133,12 @@ export const ActionCart = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: ${(props) => props.theme.purple};
+  }
 `

@@ -47,7 +47,7 @@ export const coffees: Coffee[] = [
     tags: ['tradicional', 'com leite'],
     name: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
-    photo: 'leite.png',
+    photo: 'cafe-com-leite.png',
     price: 9.9,
   },
   {
@@ -90,7 +90,7 @@ export const coffees: Coffee[] = [
     tags: ['especial', 'com leite'],
     name: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
-    photo: 'chocolate.png',
+    photo: 'chocolate-quente.png',
     price: 9.9,
   },
   {
