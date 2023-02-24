@@ -24,4 +24,6 @@ export const CoffesList = styled.div`
   justify-content: flex-start;
   flex-direction: row;
   row-gap: 2.5rem;
+
+  margin-bottom: 10rem;
 `
