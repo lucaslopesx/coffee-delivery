@@ -13,9 +13,10 @@ import {
   Tags,
 } from './styles'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Coffee } from '../../../../data/coffees'
+import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
 interface CoffeCardProps {
   coffee: Coffee
@@ -24,25 +25,15 @@ interface CoffeCardProps {
 export function CoffeeCard({ coffee }: CoffeCardProps) {
   const themeContext = useContext(ThemeContext)
 
-  const [quantity, setQuantity] = useState(1)
+  const { addQuantity, quantity, subtractQuantity } = useContext(CoffeeContext)
 
   function getCoffeImage(image: string) {
     return `/src/assets/${image}`
   }
 
-  function addQuantity() {
-    setQuantity((state) => {
-      return state + 1
-    })
-  }
-
-  function subtractQuantity() {
-    setQuantity((state) => {
-      if (state === 1) {
-        return 1
-      }
-      return state - 1
-    })
+  function handleAddToCart() {
+    console.log(coffee.id)
+    console.log(quantity)
   }
 
   return (
@@ -72,7 +63,7 @@ export function CoffeeCard({ coffee }: CoffeCardProps) {
               <Minus size={14} weight="fill" />
             </ActionButton>
           </Actions>
-          <ActionCart>
+          <ActionCart onClick={handleAddToCart}>
             <ShoppingCart size={22} weight="fill" color={themeContext.card} />
           </ActionCart>
         </CoffeeQuantity>
