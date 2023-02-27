@@ -4,10 +4,15 @@ interface CoffeeContextProviderProps {
   children: ReactNode
 }
 
-interface CoffeeContextType {
+export interface CartItem {
+  id: string
   quantity: number
-  addQuantity: () => void
-  subtractQuantity: () => void
+}
+
+interface CoffeeContextType {
+  quantityInCart: number
+  cartItem: CartItem[]
+  addCoffeToCart: (item: CartItem) => void
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextType)
@@ -15,25 +20,29 @@ export const CoffeeContext = createContext({} as CoffeeContextType)
 export function CoffeeContextProvider({
   children,
 }: CoffeeContextProviderProps) {
-  const [quantity, setQuantity] = useState(1)
+  const [cartItem, setCartItem] = useState<CartItem[]>([])
 
-  function addQuantity() {
-    setQuantity((state) => {
-      return state + 1
-    })
-  }
-
-  function subtractQuantity() {
-    setQuantity((state) => {
-      if (state === 1) {
-        return 1
+  function addCoffeToCart(item: CartItem) {
+    setCartItem((state) => {
+      const itemInStateIndex = state.findIndex((x) => x.id === item.id)
+      if (itemInStateIndex !== -1) {
+        state[itemInStateIndex] = {
+          id: state[itemInStateIndex].id,
+          quantity: state[itemInStateIndex].quantity + item.quantity,
+        }
+        return [...state]
       }
-      return state - 1
+
+      return [...state, item]
     })
   }
+  console.log(cartItem)
 
+  const quantityInCart = cartItem.length
   return (
-    <CoffeeContext.Provider value={{ quantity, addQuantity, subtractQuantity }}>
+    <CoffeeContext.Provider
+      value={{ addCoffeToCart, quantityInCart, cartItem }}
+    >
       {children}
     </CoffeeContext.Provider>
   )

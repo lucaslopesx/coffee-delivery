@@ -1,12 +1,19 @@
-import { Actions, Cart, HeaderContainer, Location } from './styles'
+import { Actions, Cart, HeaderContainer, Location, Quantity } from './styles'
 import logoCoffee from '../../assets/coffee-logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { ThemeContext } from 'styled-components'
 import { useContext } from 'react'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
   console.log(logoCoffee)
   const themeContext = useContext(ThemeContext)
+
+  const { quantityInCart, cartItem } = useContext(CoffeeContext)
+
+  function showCartItems() {
+    console.log(cartItem)
+  }
 
   return (
     <HeaderContainer>
@@ -16,12 +23,13 @@ export function Header() {
           <MapPin size={22} color={themeContext.purple} weight="fill" />
           Machado, MG
         </Location>
-        <Cart>
+        <Cart onClick={showCartItems}>
           <ShoppingCart
             size={22}
             color={themeContext['yellow-dark']}
             weight="fill"
           />
+          {quantityInCart > 0 ? <Quantity>{quantityInCart}</Quantity> : <></>}
         </Cart>
       </Actions>
     </HeaderContainer>
