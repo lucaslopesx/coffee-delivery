@@ -3,13 +3,25 @@ import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import {
   AddressAndPayment,
-  AddressContainer,
-  AddressSelection,
-  AddressText,
+  CardContainer,
+  CardHeader,
+  CardHeaderText,
+  CEPContainer,
+  CepInput,
   CheckoutContainer,
   CheckoutGrid,
+  CityInput,
+  FormContainer,
+  InputContainer,
+  NeighborhoodCityAndStateContainer,
+  NeighborhoodInput,
+  NumberAndUnitContainer,
+  NumberInput,
   PaymentContainer,
+  StateInput,
+  StreetInput,
   Title,
+  UnitInput,
 } from './styles'
 
 export function Checkout() {
@@ -19,15 +31,35 @@ export function Checkout() {
       <CheckoutGrid>
         <AddressAndPayment>
           <Title>Complete seu pedido</Title>
-          <AddressContainer>
-            <AddressSelection>
+          <CardContainer>
+            <CardHeader>
               <MapPin size={22} color={themeContext['yellow-dark']} />
-              <AddressText>
+              <CardHeaderText>
                 <p>Endereço de Entrega</p>
                 <p>Informe o endereço onde deseja receber seu pedido</p>
-              </AddressText>
-            </AddressSelection>
-          </AddressContainer>
+              </CardHeaderText>
+            </CardHeader>
+            <form action="">
+              <FormContainer>
+                <CEPContainer>
+                  <CepInput placeholder='CEP'/>                    
+                </CEPContainer>
+                <div>
+                  <StreetInput placeholder='Rua'/>
+                </div>
+                <NumberAndUnitContainer>
+                  <NumberInput placeholder='Numero'/>
+                  <UnitInput placeholder='Complemento'/> 
+                </NumberAndUnitContainer>
+                <NeighborhoodCityAndStateContainer>
+                  <NeighborhoodInput placeholder='Bairro'/>
+                  <CityInput placeholder='Cidade'/>
+                  <StateInput placeholder='UF'/>
+                </NeighborhoodCityAndStateContainer>
+              </FormContainer>
+            </form>
+
+          </CardContainer>
           <PaymentContainer>Payment</PaymentContainer>
         </AddressAndPayment>
         <Title>teste</Title>

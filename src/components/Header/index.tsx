@@ -4,6 +4,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react'
 import { ThemeContext } from 'styled-components'
 import { useContext } from 'react'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
+import { NavLink } from 'react-router-dom'
 
 export function Header() {
   console.log(logoCoffee)
@@ -23,14 +24,16 @@ export function Header() {
           <MapPin size={22} color={themeContext.purple} weight="fill" />
           Machado, MG
         </Location>
-        <Cart onClick={showCartItems}>
-          <ShoppingCart
-            size={22}
-            color={themeContext['yellow-dark']}
-            weight="fill"
-          />
-          {quantityInCart > 0 ? <Quantity>{quantityInCart}</Quantity> : <></>}
-        </Cart>
+        <NavLink to={"/checkout"}>
+          <Cart onClick={showCartItems}>
+            <ShoppingCart
+              size={22}
+              color={themeContext['yellow-dark']}
+              weight="fill"
+            />
+            {quantityInCart > 0 ? <Quantity>{quantityInCart}</Quantity> : <></>}
+          </Cart>
+        </NavLink>
       </Actions>
     </HeaderContainer>
   )
