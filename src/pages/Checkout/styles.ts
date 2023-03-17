@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CheckoutContainer = styled.div`
-  margin: 0 10rem;
+  margin: 0rem 10rem 15rem;
 `
 
 export const CheckoutGrid = styled.div`
@@ -22,18 +22,31 @@ export const Title = styled.p`
   color: ${(props) => props.theme.subtitle};
 `
 
-export const AddressAndPayment = styled.div`
+export const CardContainer = styled.div`
+  background: ${(props) => props.theme.card};
+  margin-bottom: 0.75rem;
+  padding: 2.5rem;
   border-radius: 6px;
 `
 
-export const CardContainer = styled.div`
-  background: ${props => props.theme.card};
-  margin-bottom: 0.75rem;
-  padding: 2.5rem;
-`
-
 export const PaymentContainer = styled.div`
-  background: ${props => props.theme.card};
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.75rem;
+
+  div {
+    flex: 1;
+    background: ${(props) => props.theme.button};
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+
+    p {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+  }
 `
 
 export const CardHeader = styled.div`
@@ -44,11 +57,11 @@ export const CardHeader = styled.div`
 export const CardHeaderText = styled.div`
   p:first-of-type {
     font-size: 1rem;
-    color: ${props => props.theme.subtitle};
+    color: ${(props) => props.theme.subtitle};
   }
   p:last-of-type {
     font-size: 0.875rem;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
 `
 
@@ -62,17 +75,17 @@ export const FormContainer = styled.div`
 `
 
 export const InputContainer = styled.input`
-  background: ${props => props.theme.input};
+  background: ${(props) => props.theme.input};
 
-  border: 1px solid ${props => props.theme.button};
+  border: 1px solid ${(props) => props.theme.button};
   border-radius: 4px;
-  color: ${props => props.theme.label};
+  color: ${(props) => props.theme.label};
   padding: 0.75rem;
 `
 
 export const CepInput = styled(InputContainer)`
   grid-column: 1 / span 2;
-  width: 100%;  
+  width: 100%;
 `
 
 export const CEPContainer = styled.div`
@@ -119,4 +132,22 @@ export const CityInput = styled(InputContainer)`
 export const StateInput = styled(InputContainer)`
   grid-column: 3;
   width: 100%;
+`
+
+export const SelectedCoffeesCard = styled.div`
+  background: ${(props) => props.theme.card};
+  margin-bottom: 0.75rem;
+  padding: 2.5rem;
+  border-radius: 6px 44px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
+
+export const SelectedCoffee = styled.div`
+  padding: 0.5rem 0.25rem;
+
+  display: flex;
+  flex-direction: row;
 `

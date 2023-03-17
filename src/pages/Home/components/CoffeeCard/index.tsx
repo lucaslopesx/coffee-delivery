@@ -1,15 +1,13 @@
 import {
-  ActionButton,
   ActionCart,
-  Actions,
   CoffeCardDescription,
   CoffeCardTitle,
   CoffeeCardContainer,
   CoffeeCardFooter,
   CoffeeCardHeader,
   CoffeePrice,
-  CoffeeQuantity,
   CoffeeTag,
+  CoffeeQuantity,
   Tags,
 } from './styles'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
@@ -17,6 +15,7 @@ import { useContext, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Coffee } from '../../../../data/coffees'
 import { CartItem, CoffeeContext } from '../../../../contexts/CoffeeContext'
+import { ActionButton, Actions } from '../../../../styles/actions/styles'
 
 interface CoffeCardProps {
   coffee: Coffee
