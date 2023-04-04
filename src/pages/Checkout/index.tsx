@@ -1,7 +1,17 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  Minus,
+  Money,
+  Plus,
+  Trash,
+} from 'phosphor-react'
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import {
+  CoffeeImageAndData,
   CardContainer,
   CardHeader,
   CardHeaderText,
@@ -22,10 +32,33 @@ import {
   PaymentContainer,
   SelectedCoffeesCard,
   SelectedCoffee,
+  SelectedCoffeeDetails,
+  SelectedCoffeeActions,
+  SelectedCoffeeCount,
+  RemoveButton,
+  SelectedCoffeePrice,
+  Divider,
 } from './styles'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
+import { coffees } from '../../data/coffees'
+
+function getCoffeImage(image: string) {
+  return `/src/assets/${image}`
+}
 
 export function Checkout() {
   const themeContext = useContext(ThemeContext)
+
+  const { cartItems, addCoffeeQuantityInCart, subtractCoffeeQuantityInCart } =
+    useContext(CoffeeContext)
+
+  const cartCoffees = coffees
+    .filter((coffee) => cartItems.some((item) => item.id === coffee.id))
+    .map((coffee) => {
+      const cartItem = cartItems.find((item) => item.id === coffee.id)
+      return { ...coffee, quantity: cartItem?.quantity }
+    })
+
   return (
     <CheckoutContainer>
       <CheckoutGrid>
@@ -91,10 +124,43 @@ export function Checkout() {
         <div>
           <Title>Cafés Selecionados</Title>
           <SelectedCoffeesCard>
-            <SelectedCoffee>
-              <CoffeeImageAndData></CoffeeImageAndData>
-              9,90
-            </SelectedCoffee>
+            {cartCoffees.map((item) => (
+              <>
+                <SelectedCoffee key={item.id}>
+                  <CoffeeImageAndData>
+                    <img src={getCoffeImage(item.photo)} alt="" />
+                    <SelectedCoffeeDetails>
+                      <p>{item.name}</p>
+                      <SelectedCoffeeActions>
+                        <SelectedCoffeeCount>
+                          <span
+                            onClick={() =>
+                              subtractCoffeeQuantityInCart(item.id)
+                            }
+                          >
+                            <Minus size={14} />
+                          </span>
+                          <p>{item.quantity}</p>
+                          <span
+                            onClick={() => addCoffeeQuantityInCart(item.id)}
+                          >
+                            <Plus size={14} />
+                          </span>
+                        </SelectedCoffeeCount>
+                        <RemoveButton>
+                          <Trash size={16} />
+                          <p>REMOVER</p>
+                        </RemoveButton>
+                      </SelectedCoffeeActions>
+                    </SelectedCoffeeDetails>
+                  </CoffeeImageAndData>
+                  <SelectedCoffeePrice>
+                    <p>R$ {item.price.toFixed(2)}</p>
+                  </SelectedCoffeePrice>
+                </SelectedCoffee>
+                <Divider />
+              </>
+            ))}
           </SelectedCoffeesCard>
         </div>
       </CheckoutGrid>

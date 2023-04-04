@@ -11,7 +11,9 @@ export interface CartItem {
 
 interface CoffeeContextType {
   quantityInCart: number
-  cartItem: CartItem[]
+  cartItems: CartItem[]
+  addCoffeeQuantityInCart: (id: string) => void
+  subtractCoffeeQuantityInCart: (id: string) => void
   addCoffeToCart: (item: CartItem) => void
 }
 
@@ -20,7 +22,7 @@ export const CoffeeContext = createContext({} as CoffeeContextType)
 export function CoffeeContextProvider({
   children,
 }: CoffeeContextProviderProps) {
-  const [cartItem, setCartItem] = useState<CartItem[]>([])
+  const [cartItems, setCartItem] = useState<CartItem[]>([])
 
   function addCoffeToCart(item: CartItem) {
     setCartItem((state) => {
@@ -36,12 +38,52 @@ export function CoffeeContextProvider({
       return [...state, item]
     })
   }
-  console.log(cartItem)
 
-  const quantityInCart = cartItem.length
+  function addCoffeeQuantityInCart(id: string) {
+    setCartItem((state) => {
+      const itemInStateIndex = state.findIndex((x) => x.id === id)
+      if (itemInStateIndex !== -1) {
+        state[itemInStateIndex] = {
+          id: state[itemInStateIndex].id,
+          quantity: state[itemInStateIndex].quantity + 1,
+        }
+        console.log(state)
+        return [...state]
+      }
+
+      return [...state]
+    })
+  }
+
+  function subtractCoffeeQuantityInCart(id: string) {
+    setCartItem((state) => {
+      const itemInStateIndex = state.findIndex((x) => x.id === id)
+      if (itemInStateIndex !== -1) {
+        state[itemInStateIndex] = {
+          id: state[itemInStateIndex].id,
+          quantity:
+            state[itemInStateIndex].quantity > 0
+              ? state[itemInStateIndex].quantity - 1
+              : 0,
+        }
+        console.log(state)
+        return [...state]
+      }
+
+      return [...state]
+    })
+  }
+
+  const quantityInCart = cartItems.length
   return (
     <CoffeeContext.Provider
-      value={{ addCoffeToCart, quantityInCart, cartItem }}
+      value={{
+        addCoffeToCart,
+        quantityInCart,
+        cartItems,
+        addCoffeeQuantityInCart,
+        subtractCoffeeQuantityInCart,
+      }}
     >
       {children}
     </CoffeeContext.Provider>

@@ -10,10 +10,10 @@ export function Header() {
   console.log(logoCoffee)
   const themeContext = useContext(ThemeContext)
 
-  const { quantityInCart, cartItem } = useContext(CoffeeContext)
+  const { quantityInCart, cartItems } = useContext(CoffeeContext)
 
   function showCartItems() {
-    console.log(cartItem)
+    console.log(cartItems)
   }
 
   return (
@@ -24,7 +24,7 @@ export function Header() {
           <MapPin size={22} color={themeContext.purple} weight="fill" />
           Machado, MG
         </Location>
-        <NavLink to={"/checkout"}>
+        <NavLink to={'/checkout'}>
           <Cart onClick={showCartItems}>
             <ShoppingCart
               size={22}

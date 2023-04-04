@@ -35,10 +35,12 @@ export const PaymentContainer = styled.div`
   gap: 0.75rem;
 
   div {
+    border-radius: 6px;
     flex: 1;
     background: ${(props) => props.theme.button};
     padding: 1rem;
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: 0.75rem;
 
@@ -150,4 +152,92 @@ export const SelectedCoffee = styled.div`
 
   display: flex;
   flex-direction: row;
+  gap: 3.125rem;
+`
+
+export const CoffeeImageAndData = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: 1.25rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
+`
+
+export const SelectedCoffeeDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    color: ${(props) => props.theme.subtitle};
+  }
+`
+
+export const SelectedCoffeeActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+`
+export const SelectedCoffeeCount = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background: ${(props) => props.theme.button};
+
+  cursor: pointer;
+
+  p {
+    text-align: center;
+  }
+  span {
+    color: ${(props) => props.theme.purple};
+    padding: 0.5rem 0.5625rem;
+    transition: color 0.3s;
+    &:hover {
+      color: ${(props) => props.theme['purple-dark']};
+    }
+  }
+`
+
+export const RemoveButton = styled.div`
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  background: ${(props) => props.theme.button};
+  color: ${(props) => props.theme.purple};
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  p {
+    font-size: 0.75rem;
+    color: ${(props) => props.theme.text};
+  }
+
+  &:hover {
+    color: ${(props) => props.theme['purple-dark']};
+    background: ${(props) => props.theme.hover};
+
+    p {
+      color: ${(props) => props.theme.subtitle};
+    }
+  }
+`
+
+export const SelectedCoffeePrice = styled.div`
+  font-weight: bold;
+  white-space: nowrap;
+`
+
+export const Divider = styled.div`
+  border-top: 1px solid ${(props) => props.theme.button};
 `

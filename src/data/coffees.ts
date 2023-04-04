@@ -7,6 +7,7 @@ export interface Coffee {
   description: string
   photo: string
   price: number
+  quantity?: number
 }
 
 export const coffees: Coffee[] = [
